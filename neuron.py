@@ -1,5 +1,3 @@
-# neuron_client
-
 import base64
 import sys, socket, select
 from Crypto.Cipher import AES
@@ -8,19 +6,22 @@ import hashlib
 import signal
 
 os.system("clear")
-print """
-	  ___  ___ __ _________  ___ 
-	 / _ \/ -_) // / __/ _ \/ _ \ 
-	/_//_/\__/\_,_/_/  \___/_//_/
-	messenger v 1.2 | susmithHCK  
-        for queries: https://www.askthehackers.com
+print ("""
+     _   _ _____ _  ___    _ 
+    | \ | |_   _| |/ / |  | |
+    |  \| | | | | ' /| |  | |
+    | . ` | | | |  < | |  | |
+    | |\  |_| |_| . \| |__| |
+    |_| \_|_____|_|\_\\____/  
+	chatsystem CW1 | nikesh_uprety  
+        for queries: https://nikeshuprety.com.np
 
 
-"""
+""")
 
 def sigint_handler(signum, frame):
-    print '\n user interrupt ! shutting down'
-    print "[info] shutting down NEURON \n\n"
+    print ('\n user interrupt ! shutting down')
+    print ("[info] shutting down NEURON \n\n")
     sys.exit()	
     
 
@@ -54,7 +55,7 @@ def decrypt(secret,data):
 
 def chat_client():
     if(len(sys.argv) < 5) :
-        print 'Usage : python neuron.py <hostname> <port> <password> <nick_name>'
+        print ('Usage : python neuron.py <hostname> <port> <password> <nick_name>')
         sys.exit()
 
     host = sys.argv[1]
@@ -71,10 +72,10 @@ def chat_client():
         s.connect((host, port))
 
     except :
-        print "\033[91m"+'Unable to connect'+"\033[0m"
+        print ("\033[91m"+'Unable to connect'+"\033[0m")
         sys.exit()
 
-    print "Connected to remote host. You can start sending messages"
+    print ("Connected to remote host. You can start sending messages")
     sys.stdout.write("\033[34m"+'\n[Me :] '+ "\033[0m"); sys.stdout.flush()
 
     while 1:
@@ -87,7 +88,7 @@ def chat_client():
                 data = sock.recv(4096)
 
                 if not data :
-                    print "\033[91m"+"\nDisconnected from chat server"+"\033[0m"
+                    print ("\033[91m"+"\nDisconnected from chat server"+"\033[0m")
                     sys.exit()
                 else :
                     data = decrypt(key,data)
